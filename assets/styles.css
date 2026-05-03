@@ -1,0 +1,567 @@
+/* =========================================================
+   APEX UNIVERSITY — Global Stylesheet
+   Inspired by INFIX Education ERP design language
+   With glassmorphism on the dashboard shell
+   ========================================================= */
+
+/* --- Typography: Poppins for the entire app --- */
+html, body, [class*="css"], .stApp, .stMarkdown, .stTextInput, .stButton {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    color: #2D2D44;
+}
+
+/* --- Rich gradient background with colour pools for glassmorphism --- */
+.stApp {
+    background:
+        radial-gradient(circle at 15% 20%, rgba(139, 95, 191, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(255, 107, 157, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(106, 61, 232, 0.10) 0%, transparent 60%),
+        linear-gradient(135deg, #EDE7F6 0%, #DDD2F0 50%, #F3DCEA 100%);
+    background-attachment: fixed;
+}
+
+/* --- Hide default Streamlit chrome --- */
+#MainMenu { visibility: hidden; }
+header[data-testid="stHeader"] { background: transparent; }
+footer { visibility: hidden; }
+[data-testid="stToolbar"] { visibility: hidden; }
+.stDeployButton { display: none; }
+
+/* =========================================================
+   LOGIN SCREEN
+   ========================================================= */
+.brand-title {
+    font-size: 3.6rem;
+    font-weight: 700;
+    margin: 40px 0 0 0;
+    background: linear-gradient(135deg, #8B5FBF 0%, #6A3DE8 55%, #FF6B9D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 4px;
+    text-align: center;
+    line-height: 1;
+}
+.brand-tagline {
+    text-align: center;
+    color: #8A8AA8;
+    font-size: 0.78rem;
+    letter-spacing: 4px;
+    margin-top: 6px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.login-heading {
+    text-align: center;
+    color: #2D2D44;
+    font-weight: 600;
+    margin-top: 28px;
+    margin-bottom: 4px;
+    font-size: 1.5rem;
+}
+.login-sub {
+    text-align: center;
+    color: #8A8AA8;
+    margin-bottom: 18px;
+    font-size: 0.92rem;
+}
+
+/* Treat the Streamlit form as our white card */
+[data-testid="stForm"] {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 30px 34px 26px 34px;
+    box-shadow: 0 14px 44px rgba(106, 61, 232, 0.12),
+                0 2px 6px  rgba(106, 61, 232, 0.04);
+    border: 1px solid rgba(139, 95, 191, 0.08);
+}
+
+/* --- Inputs --- */
+.stTextInput > div > div > input {
+    border-radius: 12px !important;
+    border: 1.5px solid #E5DEF5 !important;
+    padding: 11px 14px !important;
+    font-size: 0.95rem !important;
+    background: #FAF8FF !important;
+    color: #2D2D44 !important;
+    transition: all 0.2s ease;
+}
+.stTextInput > div > div > input:focus {
+    border-color: #8B5FBF !important;
+    background: #ffffff !important;
+    box-shadow: 0 0 0 3px rgba(139, 95, 191, 0.14) !important;
+}
+.stTextInput label {
+    font-weight: 500 !important;
+    color: #2D2D44 !important;
+    font-size: 0.88rem !important;
+}
+
+/* --- Pill-shaped gradient submit button --- */
+.stFormSubmitButton > button {
+    background: linear-gradient(135deg, #8B5FBF 0%, #6A3DE8 100%) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 999px !important;
+    padding: 12px 24px !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    letter-spacing: 0.5px !important;
+    box-shadow: 0 8px 22px rgba(106, 61, 232, 0.30) !important;
+    transition: all 0.25s ease !important;
+    margin-top: 6px;
+}
+.stFormSubmitButton > button:hover {
+    background: linear-gradient(135deg, #6A3DE8 0%, #FF6B9D 100%) !important;
+    box-shadow: 0 10px 26px rgba(255, 107, 157, 0.35) !important;
+    transform: translateY(-1px);
+}
+
+/* --- Demo credentials box --- */
+.demo-box {
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.55);
+    border-radius: 14px;
+    padding: 16px 22px 18px 22px;
+    border: 1px solid rgba(139, 95, 191, 0.12);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+.demo-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #6A3DE8;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.demo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 18px;
+    font-size: 0.78rem;
+}
+.demo-grid > div { line-height: 1.5; }
+.demo-grid strong { color: #2D2D44; font-weight: 600; display: block; }
+.demo-grid span    { color: #8A8AA8; font-family: 'Courier New', monospace; font-size: 0.74rem; }
+
+/* --- Streamlit alerts --- */
+.stAlert {
+    border-radius: 12px !important;
+    border: none !important;
+    font-size: 0.9rem !important;
+}
+
+/* =========================================================
+   DASHBOARD SHELL — Sidebar, Header, Cards (Glassmorphism)
+   ========================================================= */
+
+/* --- Sidebar: heavy frosted glass --- */
+[data-testid="stSidebar"] {
+    background: rgba(255, 255, 255, 0.40) !important;
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border-right: 1px solid rgba(255, 255, 255, 0.55);
+    box-shadow:
+        4px 0 30px rgba(106, 61, 232, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+[data-testid="stSidebar"] > div:first-child {
+    padding-top: 24px;
+}
+[data-testid="stSidebarCollapseButton"] {
+    display: none;
+}
+
+/* --- Sidebar brand block --- */
+.sidebar-brand {
+    text-align: center;
+    padding: 0 16px 18px 16px;
+    border-bottom: 1px solid rgba(139, 95, 191, 0.12);
+    margin-bottom: 18px;
+}
+.sidebar-brand-title {
+    font-size: 1.7rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #8B5FBF 0%, #6A3DE8 55%, #FF6B9D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 3px;
+    margin: 0;
+    line-height: 1;
+}
+.sidebar-brand-tagline {
+    font-size: 0.62rem;
+    color: #8A8AA8;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+/* --- Sidebar user card --- */
+.user-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 14px;
+    margin: 0 12px 22px 12px;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+        0 4px 14px rgba(106, 61, 232, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+.user-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8B5FBF 0%, #6A3DE8 60%, #FF6B9D 100%);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(106, 61, 232, 0.30);
+}
+.user-info { display: flex; flex-direction: column; min-width: 0; }
+.user-name {
+    font-weight: 600;
+    color: #2D2D44;
+    font-size: 0.88rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.user-role {
+    font-size: 0.7rem;
+    color: #8A8AA8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+}
+
+/* --- Sidebar nav section label --- */
+.nav-section-label {
+    font-size: 0.68rem;
+    color: #8A8AA8;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    padding: 0 22px;
+    margin: 16px 0 6px 0;
+}
+
+/* --- Sidebar navigation buttons --- */
+[data-testid="stSidebar"] .stButton > button {
+    background: transparent !important;
+    color: #2D2D44 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 11px 22px !important;
+    text-align: left !important;
+    width: 100% !important;
+    font-weight: 500 !important;
+    font-size: 0.92rem !important;
+    box-shadow: none !important;
+    transition: all 0.15s ease !important;
+    justify-content: flex-start !important;
+    margin: 0 !important;
+}
+[data-testid="stSidebar"] .stButton > button:hover {
+    background: rgba(139, 95, 191, 0.10) !important;
+    color: #6A3DE8 !important;
+    transform: none !important;
+}
+[data-testid="stSidebar"] .stButton > button[kind="primary"] {
+    background: linear-gradient(90deg,
+                rgba(139, 95, 191, 0.22) 0%,
+                rgba(106, 61, 232, 0.12) 100%) !important;
+    color: #6A3DE8 !important;
+    border-left: 3px solid #6A3DE8 !important;
+    font-weight: 600 !important;
+}
+
+/* --- Sidebar logout wrapper --- */
+.sidebar-logout-wrap {
+    padding: 10px 14px 18px 14px;
+    margin-top: 18px;
+    border-top: 1px solid rgba(139, 95, 191, 0.12);
+}
+
+/* =========================================================
+   TOP HEADER (Glassmorphism)
+   ========================================================= */
+.top-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 28px;
+    margin: -10px -10px 22px -10px;
+    background: rgba(255, 255, 255, 0.42);
+    backdrop-filter: blur(22px) saturate(180%);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+        0 6px 24px rgba(106, 61, 232, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+.top-header-left h1 {
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: #2D2D44;
+    margin: 0;
+    line-height: 1.2;
+}
+.top-header-left p {
+    font-size: 0.82rem;
+    color: #8A8AA8;
+    margin: 2px 0 0 0;
+}
+.top-header-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.role-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: linear-gradient(135deg, #8B5FBF 0%, #6A3DE8 100%);
+    color: #ffffff;
+    border-radius: 999px;
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(106, 61, 232, 0.25);
+}
+.header-icon-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #6A3DE8;
+    font-size: 1.05rem;
+    border: 1px solid rgba(139, 95, 191, 0.15);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.header-icon-btn:hover {
+    background: rgba(139, 95, 191, 0.15);
+    transform: translateY(-1px);
+}
+
+/* =========================================================
+   KPI CARDS (Glassmorphism)
+   ========================================================= */
+.kpi-card {
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(22px) saturate(180%);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    border-radius: 18px;
+    padding: 22px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+        0 8px 32px rgba(106, 61, 232, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    height: 100%;
+}
+.kpi-card:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.55);
+    box-shadow:
+        0 14px 40px rgba(106, 61, 232, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+.kpi-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+.kpi-label {
+    font-size: 0.78rem;
+    color: #8A8AA8;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin: 0;
+}
+.kpi-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.05rem;
+    box-shadow: 0 4px 12px rgba(106, 61, 232, 0.25);
+}
+.kpi-icon.purple  { background: linear-gradient(135deg, #8B5FBF, #6A3DE8); }
+.kpi-icon.pink    { background: linear-gradient(135deg, #FF6B9D, #FF8FB1); }
+.kpi-icon.teal    { background: linear-gradient(135deg, #4ECDC4, #44A08D); }
+.kpi-icon.amber   { background: linear-gradient(135deg, #FFA751, #FFB347); }
+.kpi-value {
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: #2D2D44;
+    margin: 0;
+    line-height: 1.1;
+}
+.kpi-sub {
+    font-size: 0.78rem;
+    color: #8A8AA8;
+    margin-top: 4px;
+}
+
+/* =========================================================
+   GENERIC CONTENT CARD (Glassmorphism)
+   ========================================================= */
+.content-card {
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(22px) saturate(180%);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    border-radius: 18px;
+    padding: 24px 28px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+        0 8px 32px rgba(106, 61, 232, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    margin-bottom: 22px;
+}
+.content-card-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #2D2D44;
+    margin: 0 0 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.content-card-title i {
+    color: #6A3DE8;
+}
+
+/* =========================================================
+   STATUS PILLS
+   ========================================================= */
+.status-pill {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.status-pill.settled { background: rgba(78, 205, 196, 0.18); color: #2A9D8F; }
+.status-pill.partial { background: rgba(255, 167, 81, 0.18); color: #C77800; }
+.status-pill.unpaid  { background: rgba(255, 107, 157, 0.18); color: #C2185B; }
+.status-pill.none    { background: rgba(138, 138, 168, 0.18); color: #6C6C8A; }
+
+/* =========================================================
+   STREAMLIT WIDGET TWEAKS
+   ========================================================= */
+.stSelectbox > div > div {
+    border-radius: 12px !important;
+    border: 1.5px solid #E5DEF5 !important;
+    background: #FAF8FF !important;
+}
+.stSelectbox > div > div:focus-within {
+    border-color: #8B5FBF !important;
+    box-shadow: 0 0 0 3px rgba(139, 95, 191, 0.14) !important;
+}
+
+/* Tabs */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 6px;
+    background: transparent;
+    border-bottom: 1px solid rgba(139, 95, 191, 0.15);
+}
+.stTabs [data-baseweb="tab"] {
+    background: transparent;
+    color: #8A8AA8;
+    font-weight: 500;
+    padding: 10px 18px;
+    border-radius: 10px 10px 0 0;
+    transition: all 0.2s ease;
+}
+.stTabs [data-baseweb="tab"]:hover {
+    color: #6A3DE8;
+    background: rgba(139, 95, 191, 0.06);
+}
+.stTabs [aria-selected="true"] {
+    color: #6A3DE8 !important;
+    background: rgba(139, 95, 191, 0.10) !important;
+    font-weight: 600 !important;
+    border-bottom: 2px solid #6A3DE8 !important;
+}
+
+/* Dataframe / table */
+.stDataFrame {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(139, 95, 191, 0.12);
+}
+
+/* =========================================================
+   FIREFOX FALLBACKS + LAYOUT POLISH
+   ========================================================= */
+
+/* Firefox: when backdrop-filter is unavailable, fall back to heavier
+   translucent fills so panels still feel layered. */
+@-moz-document url-prefix() {
+    [data-testid="stSidebar"] {
+        background: rgba(255, 255, 255, 0.65) !important;
+    }
+    .top-header,
+    .kpi-card,
+    .content-card {
+        background: rgba(255, 255, 255, 0.70) !important;
+    }
+    .user-card {
+        background: rgba(255, 255, 255, 0.78) !important;
+    }
+}
+
+/* --- Main content area: more breathing room and proper width --- */
+.main .block-container,
+[data-testid="stMain"] .block-container {
+    padding-top: 1.5rem !important;
+    padding-bottom: 3rem !important;
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
+    max-width: 100% !important;
+}
+
+/* On the login screen (no sidebar), keep the form centered nicely */
+.stApp:has([data-testid="stSidebar"][aria-expanded="false"]) .main .block-container {
+    max-width: 1400px !important;
+    margin: 0 auto;
+}
+/* Hide Streamlit's auto-generated heading anchor link icons */
+[data-testid="stHeaderActionElements"] {
+    display: none !important;
+}
+.stMarkdown a[href^="#"] {
+    display: none !important;
+}

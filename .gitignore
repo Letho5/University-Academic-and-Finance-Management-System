@@ -1,12 +1,13 @@
 # Python
-venv/
 __pycache__/
 *.pyc
 *.pyo
+venv/
+.venv/
+env/
 
-# Database (each person has their own local copy)
-data/apex.db
-data/*.db
+# Streamlit
+.streamlit/secrets.toml
 
 # IDE
 .vscode/
@@ -16,5 +17,12 @@ data/*.db
 .DS_Store
 Thumbs.db
 
-# Test files
-test_*.py
+# Generated artifacts (keep folders, ignore contents)
+reports/*.pdf
+warnings/*.pdf
+exports/*.json
+
+# But keep the folders themselves
+!reports/.gitkeep
+!warnings/.gitkeep
+!exports/.gitkeep
